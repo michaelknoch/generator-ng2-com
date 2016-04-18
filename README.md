@@ -1,15 +1,8 @@
 
-> Generator for tiny Angular2 Components, enjoy"
-> This is a friendly fork of [Samuel Kollat](https://github.com/samuel-kollat/generator-ng2-component)
+> Generator for tiny Angular2 Components, enjoy.
+This is a friendly fork of [Samuel Kollat](https://github.com/samuel-kollat/generator-ng2-component)
 
 
-Todo:
-
- * Option for inline template
- * Option for inline styles
- * Choose whether to include Forms, Routes, ...
- * Global configuration
- * Choose whether to generate Unit tests, E2E tests
 
 ## Installation
 
@@ -17,13 +10,13 @@ First, install [Yeoman](http://yeoman.io) and generator-ng2-component using [npm
 
 ```bash
 npm install -g yo
-npm install -g generator-ng2-component
+npm install -g generator-ng2-comp
 ```
 
 Then generate your new Angular2 component:
 
 ```bash
-yo ng2-component
+yo ng2-comp
 ```
 
 ## Getting To Know Yeoman
