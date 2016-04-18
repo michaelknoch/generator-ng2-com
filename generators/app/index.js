@@ -3,7 +3,6 @@
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
-var mkdirp = require('mkdirp');
 
 module.exports = yeoman.Base.extend({
 
@@ -12,20 +11,20 @@ module.exports = yeoman.Base.extend({
 
         // Have Yeoman greet the user.
         this.log(yosay(
-            'Welcome to the ' + chalk.red('Angular2 Component') + ' generator!'
+            'Welcome to the ' + chalk.red('seneca-environment') + ' generator!'
         ));
 
         // User options
         var prompts = [{
             type: 'input',
             name: 'name',
-            message: 'Component Name? [use UpperCamelCase for naming]',
+            message: 'Component Name?',
             default: 'Home'
         }, {
             type: 'input',
             name: 'dest',
             message: 'Path to the Component location? [Parent folder of the Component, e.g \'src/app\' will result in \'src/app/new_component_name\']',
-            default: 'src/app'
+            default: 'app/comp'
         }];
 
         this.prompt(prompts, function (props) {
@@ -52,18 +51,10 @@ module.exports = yeoman.Base.extend({
             }
         }.bind(this));
 
-        // Index
-        this.fs.copyTpl(
-            this.templatePath('_index.ts'),
-            this.destinationPath(dest + 'index.ts'), {
-                fileName: nameLower
-            }
-        );
-
         // Component
         this.fs.copyTpl(
             this.templatePath('_component.ts'),
-            this.destinationPath(dest + nameLower + '.component.ts'), {
+            this.destinationPath(dest + nameLower + '.comp.ts'), {
                 fileName: nameLower,
                 className: nameUpper,
                 selector: nameDashed
@@ -87,21 +78,21 @@ module.exports = yeoman.Base.extend({
         );
 
         // Unit tests
-        this.fs.copyTpl(
+        /*this.fs.copyTpl(
             this.templatePath('_component.spec.ts'),
             this.destinationPath(dest + nameLower + '.spec.ts'), {
                 fileName: nameLower,
                 className: nameUpper
             }
-        );
+        );*/
 
         // E2E tests
-        this.fs.copyTpl(
+        /*this.fs.copyTpl(
             this.templatePath('_component.e2e.ts'),
             this.destinationPath(dest + nameLower + '.e2e.ts'), {
                 className: nameUpper
             }
-        );
+        );*/
     },
 
     install: function () {}
