@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/generator-ng2-comp.svg)](https://badge.fury.io/js/generator-ng2-comp)
+![dependencies](https://david-dm.org/michaelknoch/genrator-ng2-comp.svg)
 
 > Generator for tiny Angular2 Components, enjoy.
 This is a friendly fork of [Samuel Kollat](https://github.com/samuel-kollat/generator-ng2-component)
