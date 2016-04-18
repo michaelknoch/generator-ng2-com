@@ -1,8 +1,9 @@
 'use strict';
 
-var yeoman = require('yeoman-generator');
-var chalk = require('chalk');
-var yosay = require('yosay');
+const yeoman = require('yeoman-generator');
+const chalk = require('chalk');
+const yosay = require('yosay');
+const mkdirp = require('mkdirp');
 
 module.exports = yeoman.Base.extend({
 
@@ -11,7 +12,7 @@ module.exports = yeoman.Base.extend({
 
         // Have Yeoman greet the user.
         this.log(yosay(
-            'Welcome to the ' + chalk.red('seneca-environment') + ' generator!'
+            'Welcome to the ' + chalk.red('ng2-comp') + ' generator!'
         ));
 
         // User options
@@ -23,8 +24,8 @@ module.exports = yeoman.Base.extend({
         }, {
             type: 'input',
             name: 'dest',
-            message: 'Path to the Component location? [Parent folder of the Component, e.g \'src/app\' will result in \'src/app/new_component_name\']',
-            default: 'app/comp'
+            message: 'Path to the Component location?',
+            default: '.'
         }];
 
         this.prompt(prompts, function (props) {
