@@ -4,6 +4,7 @@ const yeoman = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
 const mkdirp = require('mkdirp');
+const _ = require('lodash');
 
 module.exports = yeoman.Base.extend({
 
@@ -13,7 +14,7 @@ module.exports = yeoman.Base.extend({
         // Have Yeoman greet the user.
         this.log(yosay(
             'Welcome to the ' + chalk.red('ng2-comp') + ' generator!'
-        ));
+            ));
 
         // User options
         var prompts = [{
@@ -26,6 +27,11 @@ module.exports = yeoman.Base.extend({
             name: 'dest',
             message: 'Path to the Component location?',
             default: '.'
+        }, {
+            type: 'checkbox',
+            name: 'extras',
+            message: 'Some component sugar?',
+            choices: ['html', 'scss', 'router']
         }];
 
         this.prompt(prompts, function (props) {
@@ -36,13 +42,20 @@ module.exports = yeoman.Base.extend({
     },
 
     writing: function () {
+
         // Data preparation
+        var extras = {
+            "html": (-1 != _.findIndex(this.props.extras, function(item) { return item == 'html'; })),
+            "scss": (-1 != _.findIndex(this.props.extras, function(item) { return item == 'scss'; })),
+            "router": (-1 != _.findIndex(this.props.extras, function(item) { return item == 'router'; })),
+        };
+
         var nameUpper = this.props.name;
         var nameLower = this.props.name.charAt(0).toLowerCase() + this.props.name.slice(1);
         var nameDashed =  nameLower.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();});
         var dest = this.props.dest.charAt(this.props.dest.length - 1) === "/"
-            ? this.props.dest + nameLower + '/'
-            : this.props.dest + '/' + nameLower + '/';
+        ? this.props.dest + nameLower + '/'
+        : this.props.dest + '/' + nameLower + '/';
 
         // Create component directory
         mkdirp(dest, function (err) {
@@ -58,42 +71,27 @@ module.exports = yeoman.Base.extend({
             this.destinationPath(dest + nameLower + '.comp.ts'), {
                 fileName: nameLower,
                 className: nameUpper,
-                selector: nameDashed
-            }
-        );
+                selector: nameDashed,
+                sugar: extras
+            });
 
         // HTML
-        this.fs.copyTpl(
-            this.templatePath('_component.html'),
-            this.destinationPath(dest + nameLower + '.html'), {
-                name: nameUpper
-            }
-        );
+        if (extras.html) {
+            this.fs.copyTpl(
+                this.templatePath('_component.html'),
+                this.destinationPath(dest + nameLower + '.html'), {
+                    name: nameUpper
+                });
+        }
 
         // Sass
-        this.fs.copyTpl(
-            this.templatePath('_component.scss'),
-            this.destinationPath(dest + nameLower + '.scss'), {
-                name: nameUpper
-            }
-        );
-
-        // Unit tests
-        /*this.fs.copyTpl(
-            this.templatePath('_component.spec.ts'),
-            this.destinationPath(dest + nameLower + '.spec.ts'), {
-                fileName: nameLower,
-                className: nameUpper
-            }
-        );*/
-
-        // E2E tests
-        /*this.fs.copyTpl(
-            this.templatePath('_component.e2e.ts'),
-            this.destinationPath(dest + nameLower + '.e2e.ts'), {
-                className: nameUpper
-            }
-        );*/
+        if (extras.scss) {
+            this.fs.copyTpl(
+                this.templatePath('_component.scss'),
+                this.destinationPath(dest + nameLower + '.scss'), {
+                    name: nameUpper
+                });        
+        }
     },
 
     install: function () {}
