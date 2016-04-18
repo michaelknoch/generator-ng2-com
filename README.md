@@ -2,8 +2,6 @@
 > Generator for tiny Angular2 Components, enjoy.
 This is a friendly fork of [Samuel Kollat](https://github.com/samuel-kollat/generator-ng2-component)
 
-
-
 ## Installation
 
 First, install [Yeoman](http://yeoman.io) and generator-ng2-component using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
