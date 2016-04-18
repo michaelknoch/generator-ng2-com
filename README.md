@@ -1,7 +1,7 @@
-# generator-ng2-component [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-> Angular2 Component Generator with variety of options
 
-## Beta version
+> Generator for tiny Angular2 Components, enjoy"
+> This is a friendly fork of [Samuel Kollat](https://github.com/samuel-kollat/generator-ng2-component)
+
 
 Todo:
 
@@ -35,12 +35,6 @@ yo ng2-component
 
 ## License
 
-MIT © [Samuel Kollat](https://github.com/samuel-kollat)
+MIT © [Michael Knoch](https://github.com/michaelknoch)
 
 
-[npm-image]: https://badge.fury.io/js/generator-ng2-component.svg
-[npm-url]: https://npmjs.org/package/generator-ng2-component
-[travis-image]: https://travis-ci.org/samuel-kollat/generator-ng2-component.svg?branch=master
-[travis-url]: https://travis-ci.org/samuel-kollat/generator-ng2-component
-[daviddm-image]: https://david-dm.org/samuel-kollat/generator-ng2-component.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/samuel-kollat/generator-ng2-component
