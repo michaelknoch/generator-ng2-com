@@ -5,7 +5,7 @@ declare var __moduleName: any;
 @Component({
     moduleId: __moduleName,
     selector: '<%= selector %>',
-    directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES],
+    directives: [ROUTER_DIRECTIVES],
     template: require('<%= fileName %>.html'),
     styles: [require('<%= fileName %>.scss')],
 })
