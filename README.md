@@ -19,6 +19,17 @@ Then generate your new Angular2 component:
 yo ng2-comp
 ```
 
+Ensure you include node into your ambientDependencies in typings.json.
+```
+{
+  "ambientDependencies": {
+    ...
+    "node": "github:DefinitelyTyped/DefinitelyTyped/node/node.d.ts#138ad74b9e8e6c08af7633964962835add4c91e2"
+  }
+}
+
+```
+
 ## Getting To Know Yeoman
 
  * Yeoman has a heart of gold.
