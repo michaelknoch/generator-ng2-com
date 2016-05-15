@@ -1,6 +1,6 @@
 {
   "name": "generator-ng2-comp",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "repository": "https://github.com/michaelknoch/generator-ng2-comp",
   "description": "Generator for tiny Angular2 Components, enjoy",
   "main": "generators/app/index.js",
